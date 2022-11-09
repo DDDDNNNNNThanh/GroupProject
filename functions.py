@@ -10,8 +10,8 @@ import altair as alt
 connect = sqlite3.connect("database.db", check_same_thread=False)
 cur = connect.cursor()
 
-nutrition = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Nutrition.csv")
-portion = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Portion.csv")
+nutrition = pd.read_csv("Nutrition.csv")
+portion = pd.read_csv("Portion.csv")
 foodchoice = nutrition['Main food description']
 
 
@@ -151,8 +151,8 @@ def visualization(currentid):
 
 
 def calculatecalo(foodcode, currentid, i, food_removed):
-    portion = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Portion.csv")
-    nutrion = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Nutrition.csv")
+    portion = pd.read_csv("Portion.csv")
+    nutrion = pd.read_csv("Nutrition.csv")
     unitchoice_0 = portion.loc[portion['Food code'] == foodcode]
     unitchoice_0 = unitchoice_0.loc[unitchoice_0['weight'] != 0]['Descr']
     unitchoice = unitchoice_0.tolist()
