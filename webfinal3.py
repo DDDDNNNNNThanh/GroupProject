@@ -18,7 +18,7 @@ import string
 from ast import literal_eval
 
 #background img
-img = itf.get_img_as_base64("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Picture2.png")
+img = itf.get_img_as_base64("Picture2.png")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -30,8 +30,8 @@ background-attachment: local;
 </style>
 """
 
-nutrition = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Nutrition.csv")
-portion = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Portion.csv")
+nutrition = pd.read_csv("Nutrition.csv")
+portion = pd.read_csv("Portion.csv")
 foodchoice = nutrition['Main food description']
 
 # ---
@@ -43,7 +43,7 @@ cur.execute(
     """CREATE TABLE IF NOT EXISTS storage (id INTEGER, foodname VARCHAR, foodcode INTEGER, foodweight FLOAT, exp VARCHAR, expstatus VARCHAR)""")
 cur.execute("""CREATE TABLE IF NOT EXISTS usercalo(id INTEGER, calo FLOAT, datetakeout VARCHAR)""")
 
-itf.local_css("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/style.css")
+itf.local_css("style.css")
 
 selected = itf.streamlit_menu()
 
@@ -100,7 +100,7 @@ elif selected == "Home Page":
     with col0_1:
         pass
     with col0_2:
-        st.image("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/Picture1.png", width=315)
+        st.image("Picture1.png", width=315)
     with col0_1:
         pass
     with col0_1:
@@ -239,7 +239,7 @@ elif selected == "Body Calculating":
         with st.spinner("Calculating"):
             time.sleep(1)
             st.title(f"Your BMI is {round(bmi, 2)}")
-            bmi_range = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/bmi.csv")
+            bmi_range = pd.read_csv("bmi.csv")
             st.dataframe(bmi_range)
 
     if age < 18:
@@ -252,7 +252,7 @@ elif selected == "Body Calculating":
             st.header(f'Your body fat = {round(body_fat, 2)}')
             st.subheader("Healthy range")
             healthy_range = {"age": [20 - 39, 40 - 59, "above 60"], "Healthy percentage": []}
-            df = pd.read_csv("C:/Users/Asus/OneDrive/Máy tính/food storage/food storage/body-fat-healthy-range.csv")
+            df = pd.read_csv("body-fat-healthy-range.csv")
             st.dataframe(df)
 
     if gender_number == 1:
